@@ -3,17 +3,28 @@
 This project is a smart contract that demonstrates voting, giving rights to vote,
 delegating votes and proposals .
 
+
 ## Tools used
-Hardhat, typescript, solidity, mocha and mocha
+
+Hardhat, typescript, solidity and mocha
+
+## Contract Address
+Deployed on the ropsten test network
+0x0064C293Bf0B58bF58053B3ed00C33A916665d77
+
+## Transaction Hash
+0x8a81e61776fe06b255a3d6eb5fec99be8066df4c9422f80a914393f4ffefcd54
 
 ### Steps to run
- run `npm install` to install the dependencies
- npx `hardhat compile` to compile the contract
+Run these commands
+```shell
+ `npm install -` to install the dependencies 
+ `hardhat compile - ` to compile the contract
+ `npx hardhat test -` to run the tests
+```
 
-### Testing
-run `npx hardhat test` to run the tests and view the results in the terminal.
 
-### Other commands to run Script files
+### Other commands 
 
 ```shell
 npx hardhat accounts
@@ -24,7 +35,7 @@ npx hardhat node
 npx hardhat help
 REPORT_GAS=true npx hardhat test
 npx hardhat coverage
-npx hardhat run scripts/deploy.ts
+npx hardhat run scripts/deployment.ts
 TS_NODE_FILES=true npx ts-node scripts/deploy.ts
 npx eslint '**/*.{js,ts}'
 npx eslint '**/*.{js,ts}' --fix
