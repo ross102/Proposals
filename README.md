@@ -1,6 +1,5 @@
 # Voting proposal
-
-This project is a smart contract that demonstrates voting, giving rights to vote,
+This is a smart contract that demonstrates voting, giving rights to vote,
 delegating votes and proposals .
 
 
@@ -22,6 +21,8 @@ Run these commands
  `hardhat compile - ` to compile the contract
  `npx hardhat test -` to run the tests
 ```
+
+
 
 
 ### Other commands 
