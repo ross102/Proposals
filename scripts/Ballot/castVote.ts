@@ -3,11 +3,9 @@ import "dotenv/config";
 import * as ballotJson from "../../artifacts/contracts/Ballot.sol/Ballot.json";
 // eslint-disable-next-line node/no-missing-import
 import { Ballot } from "../../typechain";
-
-// This key is already public on Herong's Tutorial Examples - v1.03, by Dr. Herong Yang
-// Do never expose your keys like this
+// key is exposed just for testing
 const EXPOSED_KEY =
-  "0xdf57089febbacf7ba0bc227dafbffa9fc08a93fdc68e1e42411a14efcf23656e";
+  "0xea6c44ac03bff858b476bba40716402b03e41b8e97e276d1baec7c37d42484a0";
 
 async function main() {
   const wallet =
@@ -20,7 +18,7 @@ async function main() {
   const balanceBN = await signer.getBalance();
   const balance = Number(ethers.utils.formatEther(balanceBN));
   console.log(`Wallet balance ${balance}`);
-  if (balance < 0.00001) {
+  if (balance < 0.001) {
     throw new Error("Not enough ether");
   }
   const Addresses = ["0x0064c293bf0b58bf58053b3ed00c33a916665d77",
@@ -28,10 +26,9 @@ async function main() {
    "0x2546bcd3c84621e976d8185a91a922ae77ecec30", "0x2546bcd3c84621e976d8185a91a922ae77ecec30"]
 
   if (Addresses.length < 3) throw new Error("Ballot address missing");
-  // added the contract address as the first address in the array
-  const ballotAddress = Addresses[0];
+  const ballotAddress = Addresses[1];
   if (Addresses.length < 4) throw new Error("Voter address missing");
-  const voterAddress = Addresses[3];
+  const voterAddress = Addresses[1];
   console.log(
     `Attaching ballot contract interface to address ${ballotAddress}`
   );
@@ -40,12 +37,10 @@ async function main() {
     ballotJson.abi,
     signer
   ) as Ballot;
-  const chairpersonAddress = await ballotContract.chairperson();
-  if (chairpersonAddress !== signer.address)
-    throw new Error("Caller is not the chairperson for this contract");
-  console.log(`Giving right to vote to ${voterAddress}`);
-  const tx = await ballotContract.giveRightToVote(voterAddress);
-  console.log("Awaiting confirmations");
+  
+  //The signer already has the right to vote
+  const tx = await ballotContract.vote(1);
+  console.log(`Awaiting confirmations of casting votes`);
   await tx.wait();
   console.log(`Transaction completed. Hash: ${tx.hash}`);
 }
