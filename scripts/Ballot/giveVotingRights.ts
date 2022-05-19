@@ -24,14 +24,15 @@ async function main() {
     throw new Error("Not enough ether");
   }
   const Addresses = ["0x0064c293bf0b58bf58053b3ed00c33a916665d77",
-   "0xbda5747bfd65f08deb54cb465eb87d40e51b197e", "0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199",
-   "0x2546bcd3c84621e976d8185a91a922ae77ecec30", "0x2546bcd3c84621e976d8185a91a922ae77ecec30"]
+  "0xbda5747bfd65f08deb54cb465eb87d40e51b197e", "0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199",
+  "0x2546bcd3c84621e976d8185a91a922ae77ecec30",
+  "0xfabb0ac9d68b0b445fb7357272ff202c5651694a", "0x1cbd3b2770909d4e10f157cabc84c7264073c9ec"]
 
   if (Addresses.length < 3) throw new Error("Ballot address missing");
   // added the contract address as the first address in the array
   const ballotAddress = Addresses[0];
   if (Addresses.length < 4) throw new Error("Voter address missing");
-  const voterAddress = Addresses[3];
+  const voterAddress = Addresses[5];
   console.log(
     `Attaching ballot contract interface to address ${ballotAddress}`
   );
