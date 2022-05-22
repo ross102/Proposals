@@ -22,7 +22,8 @@ Run these commands
  `hardhat compile - ` to compile the contract
  `npx hardhat test -` to run the tests
 ```
-
+if you have issues compiling the contract. 'persistent Nothing to compile error message',
+install npm install glob@7.2.0 to fix the issue
 
 
 
